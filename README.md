@@ -1,2 +1,0 @@
-# itermate
-Iterator / Generator tools
