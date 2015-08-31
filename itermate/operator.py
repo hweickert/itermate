@@ -4,14 +4,20 @@ def attrsetter( attribute, *static_value ):
 
         The examples below show the 2 supported modes in conjunction with itertools.imap().
 
+            import itertools
+            import itermate.operator
+
             >>> class Foo(object):
             >>>     bar = 0
             >>>     def __repr__(self):
             >>>         return unicode(self.bar)
 
-            >>> static_mode  = itertools.imap( attrsetter("bar", "spam"), (Foo() for i in range(3)) )
+            >>> gen_foos = itertools.imap( attrsetter("bar", "spam"), (Foo() for i in range(3)) )
+            >>> list(gen_foos)
             [spam, spam, spam]
-            >>> dynamic_mode = itertools.imap( attrsetter("bar"),         (Foo() for i in range(3)), ["bacon", "egg", "sausage"] )
+
+            >>> gen_foos = itertools.imap( attrsetter("bar"),         (Foo() for i in range(3)), ["bacon", "egg", "sausage"] )
+            >>> list(gen_foos)
             [bacon, egg, sausage]
     """
 
