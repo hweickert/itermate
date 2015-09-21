@@ -4,7 +4,9 @@ import itertools
 
 def imapchain(*a, **kwa):
     """ Like itertools.imap but also chains the results. """
-    return itertools.chain( *itertools.imap( *a, **kwa ) )
+
+    imap_results = itertools.imap( *a, **kwa )
+    return itertools.chain( *imap_results )
 
 
 def iapply(function, *iterables):
