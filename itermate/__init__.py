@@ -20,3 +20,18 @@ def iapply(function, *iterables):
         else:
             function(*args)
             yield args[0]
+
+
+def unique(iterable):
+    """
+        Generator yielding each element only once.
+
+        Note: May consume lots of memory depending on the given iterable.
+    """
+
+    yielded = set()
+    for i in iterable:
+        if i in yielded:
+            continue
+        yield i
+        yielded.add(i)
