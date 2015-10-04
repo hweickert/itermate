@@ -1,5 +1,4 @@
 import itermate
-import itertools
 
 
 
