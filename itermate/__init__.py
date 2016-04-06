@@ -22,6 +22,18 @@ def iapply(function, *iterables):
             yield args[0]
 
 
+def iskip( value, iterable ):
+    """ Skips all values in 'iterable' matching the given 'value'. """
+
+    for e in iterable:
+        if value is None:
+            if e is None:
+                continue
+        elif e == value:
+            continue
+        yield e
+
+
 def unique(iterable):
     """
         Generator yielding each element only once.
