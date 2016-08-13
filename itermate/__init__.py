@@ -1,11 +1,19 @@
 import itertools
 
+try:
+    # on py27 make map/filter behave like an iterator
+    map = itertools.imap
+    filter = itertools.ifilter
+except AttributeError:
+    # py3+
+    pass
+
 
 
 def imapchain(*a, **kwa):
-    """ Like itertools.imap but also chains the results. """
+    """ Like map but also chains the results. """
 
-    imap_results = itertools.imap( *a, **kwa )
+    imap_results = map( *a, **kwa )
     return itertools.chain( *imap_results )
 
 
